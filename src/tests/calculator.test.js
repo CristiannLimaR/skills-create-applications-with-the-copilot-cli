@@ -44,7 +44,24 @@ describe('Calculator - basic arithmetic', () => {
     expect(() => calculate('+', 'a', 3)).toThrow('Invalid number');
   });
 
+  test('power (exponentiation)', () => {
+    expect(calculate('pow', 2, 3)).toBe(8);
+    expect(calculate('^', '3', '3')).toBe(27);
+  });
+
+  test('modulo operation and edge cases', () => {
+    expect(calculate('%', 10, 3)).toBe(1);
+    expect(calculate('mod', '10', '4')).toBe(2);
+    expect(() => calculate('%', 5, 0)).toThrow('Modulo by zero');
+  });
+
+  test('square root and edge cases', () => {
+    expect(calculate('sqrt', 9)).toBe(3);
+    expect(calculate('sqrt', '2.25')).toBeCloseTo(1.5);
+    expect(() => calculate('sqrt', -4)).toThrow('Square root of negative number');
+  });
+
   test('unsupported operation throws', () => {
-    expect(() => calculate('pow', 2, 3)).toThrow('Unsupported operation');
+    expect(() => calculate('foo', 2, 3)).toThrow('Unsupported operation');
   });
 });
