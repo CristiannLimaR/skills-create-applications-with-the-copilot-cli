@@ -51,6 +51,7 @@ describe('Calculator - basic arithmetic', () => {
 
   test('modulo operation and edge cases', () => {
     expect(calculate('%', 10, 3)).toBe(1);
+    expect(calculate('%', 5, 2)).toBe(1); // image example: 5 % 2
     expect(calculate('mod', '10', '4')).toBe(2);
     expect(() => calculate('%', 5, 0)).toThrow('Modulo by zero');
   });
@@ -58,6 +59,7 @@ describe('Calculator - basic arithmetic', () => {
   test('square root and edge cases', () => {
     expect(calculate('sqrt', 9)).toBe(3);
     expect(calculate('sqrt', '2.25')).toBeCloseTo(1.5);
+    expect(calculate('sqrt', 16)).toBe(4); // image example: sqrt 16
     expect(() => calculate('sqrt', -4)).toThrow('Square root of negative number');
   });
 
